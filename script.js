@@ -48,5 +48,8 @@ createApp({
                 this.activeIndex = this.activeIndex + 1;
             }
         },
+        slideTruThumb(index) {
+            this.activeIndex = index;
+        },
     },
 }).mount("#app");

@@ -58,7 +58,16 @@
                     </button>
                 </div>
             </div>
-            <div class="miniatures d-flex justify-content-between mt-3"></div>
+            <div class="miniatures d-flex justify-content-between mt-3">
+                <div
+                    class="miniature-item"
+                    v-for="(miniature, index) in images"
+                    :class="(index === activeIndex) ? 'active' : ''"
+                    @click="slideTruThumb(index)"
+                >
+                    <img :src="miniature.image" alt="" />
+                </div>
+            </div>
         </main>
     </body>
 </html>
