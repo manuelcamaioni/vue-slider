@@ -37,12 +37,21 @@
             </div>
             <div class="card slider position-relative">
                 <div
+                    class="slider-item"
+                    v-for="(element, index) in images"
+                    :class="(index === activeIndex) ? 'active' : ''"
+                >
+                    <h1>{{element.title}}</h1>
+                    <img :src="element.image" alt="" />
+                    <p>{{element.text}}</p>
+                </div>
+                <div
                     class="arrows-container d-flex justify-content-between position-absolute px-3"
                 >
-                    <button id="back-button">
+                    <button id="back-button" @click="prevBtn">
                         <i class="bi left-arrow bi-arrow-left-circle fs-2"></i>
                     </button>
-                    <button id="next-button">
+                    <button id="next-button" @click="nextBtn">
                         <i
                             class="bi right-arrow bi-arrow-right-circle fs-2"
                         ></i>
