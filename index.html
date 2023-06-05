@@ -33,9 +33,6 @@
                 <button id="play-button" @click="autoPlayEvent">
                     <i class="bi bi-play-fill"></i>
                 </button>
-                <button id="reverse-button" @click="reverseAutoPlayEvent">
-                    <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
             </div>
             <div class="card slider position-relative">
                 <div
@@ -44,7 +41,12 @@
                     :class="(index === activeIndex) ? 'active' : ''"
                 >
                     <h1>{{element.title}}</h1>
-                    <img :src="element.image" alt="" />
+                    <img
+                        :src="element.image"
+                        alt=""
+                        @mouseenter="stopAutoPlayEvent"
+                        @mouseleave="autoPlayEvent"
+                    />
                     <p>{{element.text}}</p>
                 </div>
                 <div

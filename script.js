@@ -31,8 +31,8 @@ createApp({
                 },
             ],
             activeIndex: 0,
-            toggleAutoPlay: false,
             clock: null,
+            counter: 0,
         };
     },
     methods: {
@@ -50,26 +50,11 @@ createApp({
             this.activeIndex = index;
         },
         autoPlayEvent() {
-            this.toggleAutoPlay = !this.toggleAutoPlay;
-            if (this.toggleAutoPlay) {
-                clearInterval(this.clock);
-                this.clock = setInterval(this.nextBtn, 1000);
-            } else {
-                clearInterval(this.clock);
-            }
+            clearInterval(this.clock);
+            this.clock = setInterval(this.nextBtn, 1000);
         },
         stopAutoPlayEvent() {
-            this.toggleAutoPlay = false;
             clearInterval(this.clock);
-        },
-        reverseAutoPlayEvent() {
-            this.toggleAutoPlay = !this.toggleAutoPlay;
-            if (this.toggleAutoPlay) {
-                clearInterval(this.clock);
-                this.clock = setInterval(this.prevBtn, 1000);
-            } else {
-                clearInterval(this.clock);
-            }
         },
     },
 }).mount("#app");
