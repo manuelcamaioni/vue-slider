@@ -31,25 +31,45 @@ createApp({
                 },
             ],
             activeIndex: 0,
+            toggleAutoPlay: false,
+            clock: null,
         };
     },
     methods: {
         prevBtn() {
-            if (this.activeIndex === 0) {
-                this.activeIndex = this.images.length - 1;
-            } else {
-                this.activeIndex = this.activeIndex - 1;
-            }
+            this.activeIndex === 0
+                ? (this.activeIndex = this.images.length - 1)
+                : (this.activeIndex = this.activeIndex - 1);
         },
         nextBtn() {
-            if (this.activeIndex === this.images.length - 1) {
-                this.activeIndex = 0;
-            } else {
-                this.activeIndex = this.activeIndex + 1;
-            }
+            this.activeIndex === this.images.length - 1
+                ? (this.activeIndex = 0)
+                : (this.activeIndex = this.activeIndex + 1);
         },
         slideTruThumb(index) {
             this.activeIndex = index;
+        },
+        autoPlayEvent() {
+            this.toggleAutoPlay = !this.toggleAutoPlay;
+            if (this.toggleAutoPlay) {
+                clearInterval(this.clock);
+                this.clock = setInterval(this.nextBtn, 1000);
+            } else {
+                clearInterval(this.clock);
+            }
+        },
+        stopAutoPlayEvent() {
+            this.toggleAutoPlay = false;
+            clearInterval(this.clock);
+        },
+        reverseAutoPlayEvent() {
+            this.toggleAutoPlay = !this.toggleAutoPlay;
+            if (this.toggleAutoPlay) {
+                clearInterval(this.clock);
+                this.clock = setInterval(this.prevBtn, 1000);
+            } else {
+                clearInterval(this.clock);
+            }
         },
     },
 }).mount("#app");

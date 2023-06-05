@@ -27,11 +27,13 @@
     <body>
         <main id="app">
             <div class="controls">
-                <button id="alt-button"><i class="bi bi-stop"></i></button>
-                <button id="play-button">
+                <button id="alt-button" @click="stopAutoPlayEvent">
+                    <i class="bi bi-stop"></i>
+                </button>
+                <button id="play-button" @click="autoPlayEvent">
                     <i class="bi bi-play-fill"></i>
                 </button>
-                <button id="reverse-button">
+                <button id="reverse-button" @click="reverseAutoPlayEvent">
                     <i class="bi bi-arrow-counterclockwise"></i>
                 </button>
             </div>
